@@ -1,0 +1,75 @@
+
+@import 'reset.scss';
+
+// variable
+// color
+
+$red-color:red;
+$green-color:green;
+$white-color:white;
+
+// size
+$size-025:25px;
+$size-040:40px;
+// variable
+
+// private class
+%container{
+    max-width: 1170px;
+    width:100%;
+    margin: 0 auto;
+}
+%p-style{
+    font-size: 16px;
+    line-height: 20px;
+    color:$red-color;
+}
+// %flex{
+//     display: flex;
+// }
+// private class
+
+
+// mixin
+@mixin flex-mixin($horizontal,$vertical){
+    justify-content: $horizontal;
+    align-items: $vertical;
+}
+@mixin flex ($property){
+    display:$property;
+}
+
+
+// mixin
+
+
+
+header{
+    height:100px;
+    @extend %container; 
+    nav{
+        background-color:$green-color;
+        .navbar-ul{
+            @include flex (flex);
+            @include flex-mixin (space-between,center);
+            li{
+                font-size:$size-025;
+                margin-right:$size-040;
+                transition: color 0.3s linear;
+                &:last-child{
+                    color:$white-color;
+                }
+                &:hover{
+                    color:$red-color;
+                }
+            }
+        }
+    }
+}
+section{
+     @include flex (flex);
+    @include flex-mixin (space-around,flex-end);
+    p{
+        @extend %p-style;
+    }
+}
